@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class App extends Component {
-    constructor(props) {
-        super(props);        
-    }
-
     render() {
         return (
             <div className="main">
@@ -14,4 +11,13 @@ class App extends Component {
     }
 }
 
-export default App;
+function mapStateToProps(state) {
+    const { alert } = state;
+    return {
+        alert
+    };
+}
+
+const connectedApp = connect(mapStateToProps)(App);
+
+export { connectedApp as App };
